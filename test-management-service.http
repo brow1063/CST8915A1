@@ -41,4 +41,3 @@ Content-Type: application/json
 {
   "item": "Bird Seeds"
 }
-# This request is missing the "id" and "quantity" fields, which should trigger an error if validation is implemented.
