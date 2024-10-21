@@ -4,19 +4,41 @@ Content-Type: application/json
 
 ###
 
-### Simulate sending an order to RabbitMQ (POST request)
+### Simulate sending an order to RabbitMQ (POST request to order-service)
 POST http://localhost:4000/orders
 Content-Type: application/json
 
 {
   "id": 123,
-  "item": "Test Item",
-  "quantity": 2
+  "item": "Dog Food",
+  "quantity": 3
 }
 
 ###
 
-### Check orders again after sending an order (GET request)
-GET http://localhost:4000/orders
-Content-Type: application/json]
+### Simulate sending another order to RabbitMQ (POST request to order-service)
+POST http://localhost:4000/orders
+Content-Type: application/json
 
+{
+  "id": 124,
+  "item": "Cat Toy",
+  "quantity": 1
+}
+
+###
+
+### Check if the orders are received in management service (GET request)
+GET http://localhost:4000/orders
+Content-Type: application/json
+
+###
+
+### Send invalid POST request (to test error handling)
+POST http://localhost:4000/orders
+Content-Type: application/json
+
+{
+  "item": "Bird Seeds"
+}
+# This request is missing the "id" and "quantity" fields, which should trigger an error if validation is implemented.
