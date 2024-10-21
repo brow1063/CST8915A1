@@ -1,0 +1,2 @@
+.env
+#Ensures sensitive files are not forked.
